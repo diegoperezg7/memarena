@@ -40,6 +40,8 @@ def print_summary(result: dict, console: Console | None = None, recorded: bool =
     ds = meta.get("dataset") or {}
     if ds.get("name"):
         lines.append(f"data: {ds['name']} ({ds.get('license', '')})")
+    if meta.get("judge_audit"):
+        lines.append(f"judge audit: {meta['judge_audit']}")
     title = "RECORDED RUN (not live)" if recorded else "memarena results"
     if meta.get("status") == "aborted":
         title += f"  [aborted: {meta.get('abort_reason', '')[:80]}]"
@@ -79,5 +81,5 @@ def print_summary(result: dict, console: Console | None = None, recorded: bool =
     cost = result.get("cost", {})
     console.print(
         f"Total spent: ${cost.get('total_usd', 0):.4f} (judge included)  "
-        f"by provider: {cost.get('by_provider', {})}"
+        "by provider: " + ", ".join(f"{k} ${v:.4f}" for k, v in (cost.get("by_provider") or {}).items())
     )

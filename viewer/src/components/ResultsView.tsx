@@ -54,6 +54,12 @@ export default function ResultsView() {
             </dd>
           </div>
           <div><dt>{t.hardware}</dt><dd>{m.hardware}</dd></div>
+          {m.judge_audit ? (
+            <div className="wide">
+              <dt>{t.judgeAudit}</dt>
+              <dd>{m.judge_audit}</dd>
+            </div>
+          ) : null}
           {m.dataset?.name ? (
             <div className="wide">
               <dt>{t.data}</dt>

@@ -101,6 +101,7 @@ export interface Results {
     status: string;
     abort_reason?: string;
     recorded?: boolean;
+    judge_audit?: string;
   };
   prompts: Record<string, string>;
   categories: Category[];

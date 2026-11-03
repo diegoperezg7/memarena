@@ -5,10 +5,12 @@ import Header from "./components/Header";
 import ResultsView from "./components/ResultsView";
 import QuestionsView from "./components/QuestionsView";
 import MethodView from "./components/MethodView";
+import { setLocale } from "./format";
 
 export default function App() {
   const { load, loading, tab, results, questionSet, lang } = useStore();
   const t = useT();
+  setLocale(lang);
   useEffect(() => {
     load();
   }, [load]);

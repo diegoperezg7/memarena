@@ -53,6 +53,8 @@ or from a clone:
 git clone https://github.com/diegoperezg7/memarena && cd memarena && uv run memarena demo
 ```
 
+![memarena demo in the terminal](docs/assets/demo.gif)
+
 It prints the table below and opens the viewer on http://127.0.0.1:8765 (add `--no-view` to only print).
 `uvx memarena` is coming to PyPI.
 
@@ -63,7 +65,12 @@ This is a **recorded real run** (`memarena run`, 2026-11-03), shipped in the pac
 (MIT), with the evidence sessions of all 20 merged into **one** history of 28 sessions (~75k tokens), the way a
 single user's export looks.
 
-<!-- RESULTS_TABLE -->
+| System | Accuracy | Single | Multi | Temporal | Update | Abstain | Retrieval p50 / p95 | Ingest | Prompt tokens / q | Cost |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| **mem0** (memory layer) | **75%** | 50% | 50% | 75% | 100% | 100% | 49 / 134 ms | 21.6 min | 611 | $0.174 |
+| bm25 (baseline) | 70% | 75% | 25% | 50% | 100% | 100% | 0.9 / 3.9 ms | 0.03 s | 4,180 | $0.008 |
+| embeddings (baseline) | 55% | 50% | 50% | 25% | 50% | 100% | 105 / 233 ms | 34 s | 3,537 | $0.007 |
+| full-context (baseline) | 50% | 0% | 0% | 75% | 75% | 100% | 0.5 / 1.2 ms | 0 s | 69,297 | $0.139 |
 
 Setup: answer model `mistral/ministral-8b-latest` (same for every system), judge `mistral/codestral-latest`,
 mem0 2.2.1 with `ministral-8b-latest` for fact extraction, embeddings `nomic-embed-text` on local Ollama, top 10
@@ -71,7 +78,19 @@ items per retriever. Hardware: Apple silicon laptop, 10 CPUs, 16 GB RAM; the loc
 other jobs during the run, so the embedding latencies are pessimistic. 20 questions is a small sample: treat
 differences of one or two questions as noise.
 
-<!-- RESULTS_NOTES -->
+What this small run shows:
+
+- **Pasting everything lost.** With ~69k prompt tokens per question, the 8B answer model said "I don't know" to
+  every single-session and multi-session question, while answering the same questions from retrieved snippets.
+- **mem0 sent about 1% of the full-context prompt** (611 vs 69,297 tokens per question) and scored highest, but
+  its ingestion took 21.6 minutes and $0.17 of LLM calls for 165 turns (one extraction call per turn), against
+  0.03 s for BM25.
+- **BM25 was 5 points behind mem0** at almost no cost. That gap is one question.
+- **Judge audit.** I checked all 80 judge decisions by hand: 3 false positives, all temporal (one each for
+  full-context, bm25 and mem0, e.g. "about 1 week ago" accepted for "4 weeks"), and no false negatives. Corrected
+  accuracy: mem0 70%, bm25 65%, embeddings 55%, full-context 45%. The order does not change. The table shows the
+  judge's raw output, as the tool produced it.
+- Total spent on this run: **$0.34** (Mistral API, priced from the token counts it returned).
 
 Browse every answer, the judge's reasoning and what each system retrieved in the
 [example viewer](https://diegoperezg7.github.io/memarena/).

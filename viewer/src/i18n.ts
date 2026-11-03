@@ -60,6 +60,7 @@ const en = {
   noData: "No data loaded",
   noDataHint: "Run memarena view results.json, or memarena view --questions questions.json.",
   judgePrompt: "Judge prompt",
+  judgeAudit: "Judge audit",
   answerPrompt: "Answer prompt (same for every system)",
   methodIntro:
     "Every system only decides what context reaches the answer model. The answer model, its prompt and the judge are the same for all systems, so accuracy differences come from memory.",
@@ -139,6 +140,7 @@ const es: Dict = {
   noData: "No hay datos cargados",
   noDataHint: "Ejecuta memarena view results.json, o memarena view --questions questions.json.",
   judgePrompt: "Prompt del juez",
+  judgeAudit: "Auditoría del juez",
   answerPrompt: "Prompt de respuesta (el mismo para todos los sistemas)",
   methodIntro:
     "Cada sistema solo decide qué contexto llega al modelo que responde. El modelo, su prompt y el juez son los mismos para todos, así que las diferencias de acierto vienen de la memoria.",

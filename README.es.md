@@ -55,6 +55,8 @@ o desde un clon:
 git clone https://github.com/diegoperezg7/memarena && cd memarena && uv run memarena demo
 ```
 
+![memarena demo in the terminal](docs/assets/demo.gif)
+
 Imprime la tabla de abajo y abre el visor en http://127.0.0.1:8765 (`--no-view` para solo imprimir).
 `uvx memarena` llegará con la publicación en PyPI.
 
@@ -65,7 +67,12 @@ Es una **ejecución real grabada** (`memarena run`, 3 nov 2026) que va dentro de
 [LongMemEval](https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned) (MIT), con las sesiones de evidencia
 de las 20 juntas en **un solo** historial de 28 sesiones (~75k tokens), como sería la exportación de un usuario.
 
-<!-- RESULTS_TABLE -->
+| Sistema | Acierto | Una sesión | Varias | Temporal | Actualización | Abstención | Recuperación p50 / p95 | Ingesta | Tokens de prompt / p | Coste |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| **mem0** (memoria) | **75 %** | 50 % | 50 % | 75 % | 100 % | 100 % | 49 / 134 ms | 21,6 min | 611 | 0,174 $ |
+| bm25 (línea base) | 70 % | 75 % | 25 % | 50 % | 100 % | 100 % | 0,9 / 3,9 ms | 0,03 s | 4.180 | 0,008 $ |
+| embeddings (línea base) | 55 % | 50 % | 50 % | 25 % | 50 % | 100 % | 105 / 233 ms | 34 s | 3.537 | 0,007 $ |
+| full-context (línea base) | 50 % | 0 % | 0 % | 75 % | 75 % | 100 % | 0,5 / 1,2 ms | 0 s | 69.297 | 0,139 $ |
 
 Configuración: modelo que responde `mistral/ministral-8b-latest` (el mismo para todos), juez
 `mistral/codestral-latest`, mem0 2.2.1 con `ministral-8b-latest` para extraer hechos, embeddings
@@ -74,7 +81,19 @@ Configuración: modelo que responde `mistral/ministral-8b-latest` (el mismo para
 latencias de embeddings son pesimistas. 20 preguntas es una muestra pequeña: diferencias de una o dos preguntas
 son ruido.
 
-<!-- RESULTS_NOTES -->
+Lo que enseña esta ejecución pequeña:
+
+- **Pegarlo todo perdió.** Con unos 69k tokens de prompt por pregunta, el modelo de 8B respondió «no lo sé» a todas
+  las preguntas de una y de varias sesiones, que sí respondía a partir de fragmentos recuperados.
+- **mem0 envió alrededor del 1 % del prompt de contexto completo** (611 frente a 69.297 tokens por pregunta) y
+  sacó la nota más alta, pero su ingesta tardó 21,6 minutos y costó 0,17 $ en llamadas al LLM para 165 turnos (una
+  extracción por turno), frente a 0,03 s de BM25.
+- **BM25 quedó a 5 puntos de mem0** casi sin coste. Esa diferencia es una pregunta.
+- **Auditoría del juez.** Revisé a mano las 80 decisiones del juez: 3 falsos positivos, todos en temporal (uno en
+  full-context, otro en bm25 y otro en mem0; por ejemplo, aceptó «hace 1 semana» cuando eran «4 semanas») y ningún
+  falso negativo. Acierto corregido: mem0 70 %, bm25 65 %, embeddings 55 %, full-context 45 %. El orden no cambia.
+  La tabla muestra la salida tal cual del juez.
+- Gasto total de esta ejecución: **0,34 $** (API de Mistral, calculado con los tokens que devolvió).
 
 Cada respuesta, el razonamiento del juez y lo que recuperó cada sistema están en el
 [visor de ejemplo](https://diegoperezg7.github.io/memarena/).
