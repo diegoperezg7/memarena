@@ -104,7 +104,7 @@ export default function ResultsView() {
                   <div className="big">{pct(sm?.accuracy)}</div>
                   <div className="bar"><span style={{ width: `${(sm?.accuracy ?? 0) * 100}%` }} /></div>
                   <div className="muted small">
-                    {sm?.correct}/{sm?.n} {t.correct} · p95 {ms(sm?.latency_p95_ms)} · {usd(sm?.cost_usd)}
+                    {sm?.correct}/{sm?.n} {t.correctCount} · p95 {ms(sm?.latency_p95_ms)} · {usd(sm?.cost_usd)}
                   </div>
                 </>
               )}

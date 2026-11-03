@@ -7,7 +7,8 @@
 - Viewer: the judge audit is stored as structured data and shown in the viewer's language (EN/ES).
 - Viewer: system cards share one layout (kind chip under the name), so they line up.
 - Viewer: answers render the bold/italic/code markdown models emit instead of showing raw asterisks; latency and
-  token counts sit on their own line in every answer card; the question field is labelled "Question".
+  token counts sit on their own line in every answer card; the question field is labelled "Question"; Spanish
+  cards say "correctas".
 - Viewer: deep links `#questions`, `#method` and `#q=<question id>` open a tab or expand a question.
 
 ## 0.1.0 - 2026-11-03
