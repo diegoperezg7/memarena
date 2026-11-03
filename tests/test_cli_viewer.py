@@ -150,3 +150,11 @@ def test_format_audit_handles_dict_and_string():
     assert text.startswith("80 decisions checked by hand: 1 false positives (bm25 1), 0 false negatives.")
     assert "bm25 65%" in text
     assert format_audit("free text") == "free text"
+
+
+def test_longmemeval_notice_ships_with_demo_data():
+    from importlib import resources
+
+    notice = resources.files("memarena") / "data" / "demo" / "LICENSE-LongMemEval.txt"
+    text = notice.read_text()
+    assert "Copyright (c) 2024 Di Wu" in text and "Permission is hereby granted" in text

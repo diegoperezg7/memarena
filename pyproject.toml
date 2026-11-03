@@ -1,6 +1,6 @@
 [project]
 name = "memarena"
-version = "0.1.1"
+version = "0.1.2"
 description = "Benchmark memory layers on your own conversations, not on someone else's leaderboard."
 readme = "README.md"
 license = "MIT"

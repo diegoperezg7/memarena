@@ -46,7 +46,7 @@ tus exportaciones y pone siempre contexto completo, BM25 y embeddings en la mism
 Demo grabada, sin claves, sin Docker y sin llamadas a modelos (menos de 2 minutos en una máquina limpia con `uv`):
 
 ```bash
-uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.1 memarena demo
+uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.2 memarena demo
 ```
 
 o desde un clon:
@@ -102,7 +102,7 @@ Cada respuesta, el razonamiento del juez y lo que recuperó cada sistema están 
 
 ```bash
 # 1. Importa tu exportación (conversations.json de ChatGPT o Claude, el .zip, o JSONL)
-uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.1 memarena import conversations.json --out history.json
+uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.2 memarena import conversations.json --out history.json
 
 # 2. Genera preguntas con respuesta y punteros a la evidencia (quedan como "pending")
 memarena generate history.json --out questions.json            # Ollama local por defecto
@@ -119,7 +119,7 @@ memarena export results.json --questions questions.json --out site
 ```
 
 mem0, Letta y Supermemory son extras opcionales:
-`uvx --from 'memarena[mem0] @ git+https://github.com/diegoperezg7/memarena@v0.1.1' memarena run ...`
+`uvx --from 'memarena[mem0] @ git+https://github.com/diegoperezg7/memarena@v0.1.2' memarena run ...`
 (o `uv sync --extra mem0` en un clon).
 
 **Privacidad.** Con `--provider ollama` y sistemas locales nada sale de tu máquina. Con un proveedor en la nube,
@@ -239,8 +239,15 @@ memarena run lme/history.json lme/questions.json --systems full-context,bm25,emb
 - Repeticiones con intervalos de confianza.
 - LoCoMo no se incluye: su licencia (CC BY-NC 4.0) no es compatible con un paquete MIT.
 
+## Datos de terceros
+
+La demo grabada incluye un subconjunto de 20 preguntas de LongMemEval
+([xiaowu0162/longmemeval-cleaned](https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned), código en
+[xiaowu0162/LongMemEval](https://github.com/xiaowu0162/LongMemEval)), con licencia MIT, Copyright (c) 2024 Di Wu.
+Su aviso de licencia va junto a los datos, sin modificar, en
+[`src/memarena/data/demo/LICENSE-LongMemEval.txt`](src/memarena/data/demo/LICENSE-LongMemEval.txt)
+(copiado del repositorio de LongMemEval en el commit `9e0b455`), y se incluye en el wheel y en el sdist.
+
 ## Licencia
 
-[MIT](LICENSE). Los datos de la demo son un subconjunto de LongMemEval
-([xiaowu0162/longmemeval-cleaned](https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned)), con licencia
-MIT; la atribución está en su paper.
+[MIT](LICENSE) para memarena. Los datos de la demo mantienen su propio aviso MIT (ver Datos de terceros).

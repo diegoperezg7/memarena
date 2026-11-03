@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 - 2026-11-03
+
+- Include LongMemEval MIT notice with the bundled demo data
+  (`src/memarena/data/demo/LICENSE-LongMemEval.txt`, copied unmodified from xiaowu0162/LongMemEval) and cite it
+  in a "Third-party data" section of the README.
+
 ## 0.1.1 - 2026-11-03
 
 - Terminal: `memarena demo` and `run` fit narrow terminals (80 columns, CI logs, pipes). Below 150 columns the
