@@ -94,7 +94,7 @@ class Budget:
         if self.spent + estimate > self.max_cost:
             raise BudgetExceededError(
                 f"Budget exceeded: spent ${self.spent:.4f}, next call would cost about ${estimate:.4f}, "
-                f"limit is ${self.max_cost:.2f}. Raise it with --max-cost or use a local model "
+                f"limit is ${self.max_cost:g}. Raise it with --max-cost or use a local model "
                 "(--provider ollama). Partial results were kept."
             )
 
