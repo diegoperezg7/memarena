@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+        with:
+          python-version: "3.12"
+      - name: Install (all extras, locked)
+        run: uv sync --locked --all-extras --group dev
+      - name: Lint
+        run: uv run ruff check src tests
+      - name: Tests (Linux runs the docker-marked ones too; macOS runners have no Docker)
+        run: |
+          if [ "$RUNNER_OS" = "Linux" ]; then uv run pytest -q; else uv run pytest -q -m "not docker"; fi
+      - name: Quickstart smoke test
+        run: uv run memarena demo --no-view
+
+  viewer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Build viewer
+        working-directory: viewer
+        run: |
+          npm ci
+          npm audit --audit-level=high
+          npm run build
+      - name: Bundled viewer is up to date
+        run: git diff --exit-code -- src/memarena/viewer_dist || (echo "Run 'cd viewer && npm run build' and commit src/memarena/viewer_dist" && exit 1)
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+      - name: pip-audit on the locked dependencies (all extras)
+        run: |
+          uv export --locked --all-extras --no-dev --no-emit-project --format requirements-txt > req.txt
+          uvx pip-audit -r req.txt --disable-pip --no-deps

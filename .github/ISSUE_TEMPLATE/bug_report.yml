@@ -1,0 +1,26 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Command you ran, what you expected and what you got. Paste the error message.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: memarena version
+      placeholder: memarena --version
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: OS, Python version, provider and systems
+      placeholder: macOS 15, Python 3.12, --provider ollama, --systems bm25,mem0
+  - type: markdown
+    attributes:
+      value: Do not paste your conversations or API keys. A minimal synthetic history is enough.

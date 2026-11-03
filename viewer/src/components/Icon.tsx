@@ -1,0 +1,15 @@
+export default function Icon({ size = 28 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="1" y="1" width="22" height="22" rx="6" fill="#7945c5" />
+      <path
+        d="M7 6.5h10a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5h-4.6L9 18.4v-2.9H7A1.5 1.5 0 0 1 5.5 14V8A1.5 1.5 0 0 1 7 6.5z"
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="11" r="1.5" fill="#ffffff" />
+    </svg>
+  );
+}

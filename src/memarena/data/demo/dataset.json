@@ -1,0 +1,8 @@
+{
+ "name": "LongMemEval subset (xiaowu0162/longmemeval-cleaned, longmemeval_oracle.json)",
+ "license": "MIT",
+ "url": "https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned",
+ "seed": 7,
+ "per_category": 4,
+ "max_chars": 16000
+}

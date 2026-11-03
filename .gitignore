@@ -1,0 +1,14 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+node_modules/
+viewer/dist/
+memarena-out/
+site/
+*.egg-info/
+.DS_Store

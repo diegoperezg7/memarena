@@ -1,0 +1,17 @@
+[
+  {"question_id": "q1", "question_type": "single-session-user", "question": "Where does my sister live?", "answer": "Denver",
+   "question_date": "2023/05/22 (Mon) 10:00", "haystack_dates": ["2023/05/20 (Sat) 02:21"], "haystack_session_ids": ["s1"],
+   "haystack_sessions": [[{"role": "user", "content": "My sister lives in Denver.", "has_answer": true}, {"role": "assistant", "content": "Nice."}]],
+   "answer_session_ids": ["s1"]},
+  {"question_id": "q2_abs", "question_type": "single-session-user", "question": "What is my hamster called?", "answer": "You did not mention this information.",
+   "question_date": "2023/05/22 (Mon) 10:00", "haystack_dates": ["2023/05/20 (Sat) 02:21"], "haystack_session_ids": ["s1"],
+   "haystack_sessions": [[{"role": "user", "content": "My sister lives in Denver.", "has_answer": false}, {"role": "assistant", "content": "Nice."}]],
+   "answer_session_ids": []},
+  {"question_id": "q3", "question_type": "knowledge-update", "question": "How many tops have I bought?", "answer": "five",
+   "question_date": "2023/10/20 (Fri) 10:00", "haystack_dates": ["2023/09/01 (Fri) 10:00", "2023/10/01 (Sun) 10:00"], "haystack_session_ids": ["s2", "s3"],
+   "haystack_sessions": [[{"role": "user", "content": "I bought three tops at H&M.", "has_answer": true}], [{"role": "user", "content": "Two more tops today, five total.", "has_answer": true}]],
+   "answer_session_ids": ["s2", "s3"]},
+  {"question_id": "q4", "question_type": "single-session-preference", "question": "Recommend a show", "answer": "rubric",
+   "question_date": "2023/10/20 (Fri) 10:00", "haystack_dates": ["2023/09/01 (Fri) 10:00"], "haystack_session_ids": ["s4"],
+   "haystack_sessions": [[{"role": "user", "content": "I like sci-fi."}]], "answer_session_ids": ["s4"]}
+]

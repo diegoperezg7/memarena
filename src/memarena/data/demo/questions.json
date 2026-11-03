@@ -1,0 +1,360 @@
+{
+ "version": 1,
+ "meta": {
+  "source": "LongMemEval (MIT) xiaowu0162/longmemeval-cleaned"
+ },
+ "questions": [
+  {
+   "id": "1faac195",
+   "category": "single-session",
+   "question": "Where does my sister Emily live?",
+   "answer": "Denver",
+   "evidence": [
+    {
+     "session_id": "answer_d01949bf",
+     "message_index": 2
+    }
+   ],
+   "question_date": "2023-05-22",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "single-session-user"
+  },
+  {
+   "id": "001be529",
+   "category": "single-session",
+   "question": "How long did I wait for the decision on my asylum application?",
+   "answer": "over a year",
+   "evidence": [
+    {
+     "session_id": "answer_530960c1",
+     "message_index": 4
+    }
+   ],
+   "question_date": "2023-05-28",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "single-session-user"
+  },
+  {
+   "id": "118b2229",
+   "category": "single-session",
+   "question": "How long is my daily commute to work?",
+   "answer": "45 minutes each way",
+   "evidence": [
+    {
+     "session_id": "answer_40a90d51",
+     "message_index": 8
+    }
+   ],
+   "question_date": "2023-05-30",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "single-session-user"
+  },
+  {
+   "id": "86f00804",
+   "category": "single-session",
+   "question": "What book am I currently reading?",
+   "answer": "The Seven Husbands of Evelyn Hugo",
+   "evidence": [
+    {
+     "session_id": "answer_96b8c9ee",
+     "message_index": 0
+    }
+   ],
+   "question_date": "2023-05-27",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "single-session-user"
+  },
+  {
+   "id": "4bc144e2",
+   "category": "multi-session",
+   "question": "How much did I spend on car wash and parking ticket?",
+   "answer": "$65",
+   "evidence": [
+    {
+     "session_id": "answer_9ef115d4_2",
+     "message_index": 2
+    },
+    {
+     "session_id": "answer_9ef115d4_1",
+     "message_index": 0
+    }
+   ],
+   "question_date": "2023-05-30",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "multi-session"
+  },
+  {
+   "id": "3fdac837",
+   "category": "multi-session",
+   "question": "What is the total number of days I spent in Japan and Chicago?",
+   "answer": "11 days (or 12 days, if April 15th to 22nd is considered as 8 days)",
+   "evidence": [
+    {
+     "session_id": "answer_419d21d5_2",
+     "message_index": 2
+    },
+    {
+     "session_id": "answer_419d21d5_1",
+     "message_index": 0
+    }
+   ],
+   "question_date": "2023-05-28",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "multi-session"
+  },
+  {
+   "id": "efc3f7c2",
+   "category": "multi-session",
+   "question": "How much earlier do I wake up on Fridays compared to other weekdays?",
+   "answer": "30 minutes",
+   "evidence": [
+    {
+     "session_id": "answer_fc81d1a2_2",
+     "message_index": 0
+    },
+    {
+     "session_id": "answer_fc81d1a2_1",
+     "message_index": 10
+    }
+   ],
+   "question_date": "2023-05-25",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "multi-session"
+  },
+  {
+   "id": "a3332713",
+   "category": "multi-session",
+   "question": "What is the total amount I spent on gifts for my coworker and brother?",
+   "answer": "$200",
+   "evidence": [
+    {
+     "session_id": "answer_16ece55f_1",
+     "message_index": 6
+    },
+    {
+     "session_id": "answer_16ece55f_2",
+     "message_index": 0
+    }
+   ],
+   "question_date": "2023-05-30",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "multi-session"
+  },
+  {
+   "id": "gpt4_b0863698",
+   "category": "temporal",
+   "question": "How many days ago did I participate in the 5K charity run?",
+   "answer": "7 days ago. 8 days (including the last day) is also acceptable.",
+   "evidence": [
+    {
+     "session_id": "answer_550bb2d1_1",
+     "message_index": 0
+    }
+   ],
+   "question_date": "2023-03-26",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "temporal-reasoning"
+  },
+  {
+   "id": "bcbe585f",
+   "category": "temporal",
+   "question": "How many weeks ago did I attend a bird watching workshop at the local Audubon society?",
+   "answer": "4",
+   "evidence": [
+    {
+     "session_id": "answer_43ba3965_1",
+     "message_index": 0
+    }
+   ],
+   "question_date": "2023-05-01",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "temporal-reasoning"
+  },
+  {
+   "id": "gpt4_e072b769",
+   "category": "temporal",
+   "question": "How many weeks ago did I start using the cashback app 'Ibotta'?",
+   "answer": "3 weeks ago",
+   "evidence": [
+    {
+     "session_id": "answer_c19bd2bf_1",
+     "message_index": 0
+    }
+   ],
+   "question_date": "2023-05-06",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "temporal-reasoning"
+  },
+  {
+   "id": "gpt4_85da3956",
+   "category": "temporal",
+   "question": "How many weeks ago did I attend the 'Summer Nights' festival at Universal Studios Hollywood?",
+   "answer": "3 weeks ago",
+   "evidence": [
+    {
+     "session_id": "answer_581ab834_1",
+     "message_index": 0
+    }
+   ],
+   "question_date": "2023-08-05",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "temporal-reasoning"
+  },
+  {
+   "id": "0f05491a",
+   "category": "knowledge-update",
+   "question": "How many stars do I need to reach the gold level on my Starbucks Rewards app?",
+   "answer": "120",
+   "evidence": [
+    {
+     "session_id": "answer_d6d2eba8_1",
+     "message_index": 10
+    },
+    {
+     "session_id": "answer_d6d2eba8_2",
+     "message_index": 6
+    }
+   ],
+   "question_date": "2023-08-01",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "knowledge-update"
+  },
+  {
+   "id": "dfde3500",
+   "category": "knowledge-update",
+   "question": "What day of the week did I meet with my previous language exchange tutor Juan?",
+   "answer": "Wednesday",
+   "evidence": [
+    {
+     "session_id": "answer_35d6c0be_1",
+     "message_index": 8
+    },
+    {
+     "session_id": "answer_35d6c0be_2",
+     "message_index": 2
+    }
+   ],
+   "question_date": "2023-06-25",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "knowledge-update"
+  },
+  {
+   "id": "4b24c848",
+   "category": "knowledge-update",
+   "question": "How many tops have I bought from H&M so far?",
+   "answer": "five",
+   "evidence": [
+    {
+     "session_id": "answer_2cec623b_1",
+     "message_index": 4
+    },
+    {
+     "session_id": "answer_2cec623b_2",
+     "message_index": 0
+    }
+   ],
+   "question_date": "2023-10-20",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "knowledge-update"
+  },
+  {
+   "id": "7e974930",
+   "category": "knowledge-update",
+   "question": "How much did I earn at the Downtown Farmers Market on my most recent visit?",
+   "answer": "$420",
+   "evidence": [
+    {
+     "session_id": "answer_c9f5693c_1",
+     "message_index": 2
+    },
+    {
+     "session_id": "answer_c9f5693c_2",
+     "message_index": 6
+    }
+   ],
+   "question_date": "2023-10-02",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "knowledge-update"
+  },
+  {
+   "id": "f4f1d8a4_abs",
+   "category": "abstention",
+   "question": "What did my dad gave me as a birthday gift?",
+   "answer": "You did not mention this information. You mentioned receiving a birthday gift from your sister, but not your dad.",
+   "evidence": [
+    {
+     "session_id": "answer_f5b33470_abs",
+     "message_index": null
+    }
+   ],
+   "question_date": "2023-05-20",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "single-session-user"
+  },
+  {
+   "id": "19b5f2b3_abs",
+   "category": "abstention",
+   "question": "How long was I in Korea for?",
+   "answer": "You did not mention this information. You mentioned staying in Japan, but not in Korea.",
+   "evidence": [
+    {
+     "session_id": "answer_5ff494b9_abs",
+     "message_index": null
+    }
+   ],
+   "question_date": "2023-05-27",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "single-session-user"
+  },
+  {
+   "id": "0862e8bf_abs",
+   "category": "abstention",
+   "question": "What is the name of my hamster?",
+   "answer": "You did not mention this information. You mentioned your cat Luna but not your hamster.",
+   "evidence": [
+    {
+     "session_id": "answer_c6fd8ebd_abs",
+     "message_index": null
+    }
+   ],
+   "question_date": "2023-05-22",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "single-session-user"
+  },
+  {
+   "id": "bc8a6e93_abs",
+   "category": "abstention",
+   "question": "What did I bake for my uncle's birthday party?",
+   "answer": "You did not mention this information. You mentioned baking for your niece's birthday party but not your uncle's",
+   "evidence": [
+    {
+     "session_id": "answer_e6143162_abs",
+     "message_index": null
+    }
+   ],
+   "question_date": "2023-05-30",
+   "status": "approved",
+   "source": "longmemeval",
+   "note": "single-session-user"
+  }
+ ]
+}

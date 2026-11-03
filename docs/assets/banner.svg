@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="200" viewBox="0 0 880 200" role="img" aria-label="memarena">
+  <style>
+    .bg { fill: #ffffff; }
+    .name { fill: #111116; }
+    .tag { fill: #5c5d66; }
+    .line { stroke: #e4e4e9; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #000000; }
+      .name { fill: #f4f5f8; }
+      .tag { fill: #a3a4ae; }
+      .line { stroke: #28282e; }
+    }
+  </style>
+  <rect class="bg" width="880" height="200" rx="16"/>
+  <rect class="line" x="0.5" y="0.5" width="879" height="199" rx="16" fill="none"/>
+  <g transform="translate(48 52) scale(4)">
+    <rect x="1" y="1" width="22" height="22" rx="6" fill="#7945c5"/>
+    <path d="M7 6.5h10a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5h-4.6L9 18.4v-2.9H7A1.5 1.5 0 0 1 5.5 14V8A1.5 1.5 0 0 1 7 6.5z" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="12" cy="11" r="1.5" fill="#ffffff"/>
+  </g>
+  <text class="name" x="176" y="108" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="56" font-weight="700" letter-spacing="-1">memarena</text>
+  <text class="tag" x="178" y="146" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="20">Benchmark memory layers on your own conversations,</text>
+  <text class="tag" x="178" y="172" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="20">not on someone else's leaderboard.</text>
+</svg>

@@ -1,0 +1,4 @@
+{"session_id": "a", "role": "user", "content": "I adopted a cat named Miso.", "timestamp": "2023-01-02T10:00:00"}
+{"session_id": "a", "role": "assistant", "content": "Lovely name!"}
+{"session_id": "b", "role": "system", "content": "ignored"}
+{"id": "c", "title": "Work", "started_at": "2023-02-01T08:00:00", "messages": [{"role": "user", "content": "I started a new job at Acme."}, {"role": "assistant", "content": "Congrats!"}]}
