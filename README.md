@@ -44,7 +44,7 @@ exports, and always puts full context, BM25 and embeddings in the same table.
 Recorded demo, no keys, no Docker, no model calls (under 2 minutes from a clean machine with `uv`):
 
 ```bash
-uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.0 memarena demo
+uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.1 memarena demo
 ```
 
 or from a clone:
@@ -99,7 +99,7 @@ Browse every answer, the judge's reasoning and what each system retrieved in the
 
 ```bash
 # 1. Import your export (ChatGPT or Claude conversations.json, the export .zip, or JSONL)
-uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.0 memarena import conversations.json --out history.json
+uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.1 memarena import conversations.json --out history.json
 
 # 2. Generate questions with gold answers and evidence pointers (written as "pending")
 memarena generate history.json --out questions.json            # local Ollama by default
@@ -116,7 +116,7 @@ memarena export results.json --questions questions.json --out site
 ```
 
 mem0, Letta and Supermemory are optional extras: run with
-`uvx --from 'memarena[mem0] @ git+https://github.com/diegoperezg7/memarena@v0.1.0' memarena run ...`
+`uvx --from 'memarena[mem0] @ git+https://github.com/diegoperezg7/memarena@v0.1.1' memarena run ...`
 (or `uv sync --extra mem0` in a clone).
 
 **Privacy.** With `--provider ollama` and local systems nothing leaves your machine. With a cloud provider,

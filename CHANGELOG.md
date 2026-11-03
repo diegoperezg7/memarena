@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.1 - 2026-11-03
+
+- Terminal: `memarena demo` and `run` fit narrow terminals (80 columns, CI logs, pipes). Below 150 columns the
+  per-category accuracy moves to a second table; below 100 columns p50 and ingestion time are dropped.
+- Viewer: the judge audit is stored as structured data and shown in the viewer's language (EN/ES).
+- Viewer: system cards share one layout (kind chip under the name), so they line up.
+- Viewer: answers render the bold/italic/code markdown models emit instead of showing raw asterisks; latency and
+  token counts sit on their own line in every answer card; the question field is labelled "Question".
+- Viewer: deep links `#questions`, `#method` and `#q=<question id>` open a tab or expand a question.
+
 ## 0.1.0 - 2026-11-03
 
 First release.

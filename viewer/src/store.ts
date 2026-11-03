@@ -80,7 +80,7 @@ export const useStore = create<State>((set, get) => ({
       history,
       editable: Boolean(ping?.editable),
       loading: false,
-      tab: results ? "results" : "questions",
+      tab: (["results", "questions", "method"] as Tab[]).find((x) => window.location.hash.includes(x)) ?? (results ? "results" : "questions"),
     });
   },
   setTab: (tab) => set({ tab }),

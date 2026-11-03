@@ -4,11 +4,15 @@ import { useStore } from "../store";
 import { useT } from "../i18n";
 import { ms, num, pct, secs, usd } from "../format";
 import type { Answer } from "../types";
+import Md from "./Md";
 
 export default function ResultsView() {
   const r = useStore((s) => s.results)!;
   const t = useT();
-  const [open, setOpen] = useState<string | null>(null);
+  const [open, setOpen] = useState<string | null>(() => {
+    const m = /(?:^|&)q=([^&]+)/.exec(window.location.hash.slice(1));
+    return m ? decodeURIComponent(m[1]) : null;
+  });
   const [cat, setCat] = useState<string>("all");
   const m = r.meta;
   const systems = useMemo(
@@ -57,7 +61,17 @@ export default function ResultsView() {
           {m.judge_audit ? (
             <div className="wide">
               <dt>{t.judgeAudit}</dt>
-              <dd>{m.judge_audit}</dd>
+              <dd>
+                {typeof m.judge_audit === "string"
+                  ? m.judge_audit
+                  : t.audit(
+                      m.judge_audit.checked,
+                      Object.values(m.judge_audit.false_positives).reduce((a, b) => a + b, 0),
+                      Object.entries(m.judge_audit.false_positives).map(([k, v]) => `${k} ${v}`).join(", "),
+                      Object.values(m.judge_audit.false_negatives).reduce((a, b) => a + b, 0),
+                      Object.entries(m.judge_audit.corrected_accuracy ?? {}).map(([k, v]) => `${k} ${pct(v)}`).join(", "),
+                    )}
+              </dd>
             </div>
           ) : null}
           {m.dataset?.name ? (
@@ -206,9 +220,9 @@ export default function ResultsView() {
                               <span className={"badge " + (a.correct ? "ok" : "bad")}>
                                 {a.correct ? <Check size={13} /> : <X size={13} />} {a.correct ? t.correct : t.wrong}
                               </span>
-                              <span className="muted small mono">{ms(a.retrieval_ms)} · {num(a.prompt_tokens)} tok{a.truncated ? ` · ${t.truncated}` : ""}</span>
+                              <span className="muted small mono answer-meta">{ms(a.retrieval_ms)} · {num(a.prompt_tokens)} tok{a.truncated ? ` · ${t.truncated}` : ""}</span>
                             </div>
-                            <p><span className="label">{t.response}</span> {a.response}</p>
+                            <p><span className="label">{t.response}</span> <Md text={a.response} /></p>
                             <p className="muted small"><span className="label">{t.judge}</span> {a.judge_reason}</p>
                             <details>
                               <summary className="small">{t.retrieved} ({a.retrieved.length})</summary>

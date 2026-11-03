@@ -4,6 +4,7 @@ const en = {
   tagline: "Benchmark memory layers on your own conversations, not on someone else's leaderboard.",
   results: "Results",
   questions: "Questions",
+  question: "Question",
   method: "Method",
   recorded: "Recorded run",
   recordedNote: "Real output of memarena run, stored with the package. Nothing is computed live.",
@@ -61,6 +62,8 @@ const en = {
   noDataHint: "Run memarena view results.json, or memarena view --questions questions.json.",
   judgePrompt: "Judge prompt",
   judgeAudit: "Judge audit",
+  audit: (n: number, fp: number, fpDetail: string, fn: number, corrected: string) =>
+    `${n} decisions checked by hand: ${fp} false positive${fp === 1 ? "" : "s"}${fpDetail ? ` (${fpDetail})` : ""}, ${fn} false negative${fn === 1 ? "" : "s"}.${corrected ? ` Corrected accuracy: ${corrected}.` : ""}`,
   answerPrompt: "Answer prompt (same for every system)",
   methodIntro:
     "Every system only decides what context reaches the answer model. The answer model, its prompt and the judge are the same for all systems, so accuracy differences come from memory.",
@@ -84,6 +87,7 @@ const es: Dict = {
   tagline: "Compara capas de memoria con tus propias conversaciones, no con el ranking de otro.",
   results: "Resultados",
   questions: "Preguntas",
+  question: "Pregunta",
   method: "Método",
   recorded: "Ejecución grabada",
   recordedNote: "Salida real de memarena run, guardada con el paquete. No se calcula nada en vivo.",
@@ -141,6 +145,8 @@ const es: Dict = {
   noDataHint: "Ejecuta memarena view results.json, o memarena view --questions questions.json.",
   judgePrompt: "Prompt del juez",
   judgeAudit: "Auditoría del juez",
+  audit: (n: number, fp: number, fpDetail: string, fn: number, corrected: string) =>
+    `${n} decisiones revisadas a mano: ${fp} falso${fp === 1 ? "" : "s"} positivo${fp === 1 ? "" : "s"}${fpDetail ? ` (${fpDetail})` : ""}, ${fn} falso${fn === 1 ? "" : "s"} negativo${fn === 1 ? "" : "s"}.${corrected ? ` Acierto corregido: ${corrected}.` : ""}`,
   answerPrompt: "Prompt de respuesta (el mismo para todos los sistemas)",
   methodIntro:
     "Cada sistema solo decide qué contexto llega al modelo que responde. El modelo, su prompt y el juez son los mismos para todos, así que las diferencias de acierto vienen de la memoria.",

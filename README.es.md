@@ -46,7 +46,7 @@ tus exportaciones y pone siempre contexto completo, BM25 y embeddings en la mism
 Demo grabada, sin claves, sin Docker y sin llamadas a modelos (menos de 2 minutos en una máquina limpia con `uv`):
 
 ```bash
-uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.0 memarena demo
+uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.1 memarena demo
 ```
 
 o desde un clon:
@@ -102,7 +102,7 @@ Cada respuesta, el razonamiento del juez y lo que recuperó cada sistema están 
 
 ```bash
 # 1. Importa tu exportación (conversations.json de ChatGPT o Claude, el .zip, o JSONL)
-uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.0 memarena import conversations.json --out history.json
+uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.1 memarena import conversations.json --out history.json
 
 # 2. Genera preguntas con respuesta y punteros a la evidencia (quedan como "pending")
 memarena generate history.json --out questions.json            # Ollama local por defecto
@@ -119,7 +119,7 @@ memarena export results.json --questions questions.json --out site
 ```
 
 mem0, Letta y Supermemory son extras opcionales:
-`uvx --from 'memarena[mem0] @ git+https://github.com/diegoperezg7/memarena@v0.1.0' memarena run ...`
+`uvx --from 'memarena[mem0] @ git+https://github.com/diegoperezg7/memarena@v0.1.1' memarena run ...`
 (o `uv sync --extra mem0` en un clon).
 
 **Privacidad.** Con `--provider ollama` y sistemas locales nada sale de tu máquina. Con un proveedor en la nube,

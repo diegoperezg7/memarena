@@ -101,7 +101,15 @@ export interface Results {
     status: string;
     abort_reason?: string;
     recorded?: boolean;
-    judge_audit?: string;
+    judge_audit?:
+      | string
+      | {
+          checked: number;
+          false_positives: Record<string, number>;
+          false_negatives: Record<string, number>;
+          categories?: string[];
+          corrected_accuracy?: Record<string, number>;
+        };
   };
   prompts: Record<string, string>;
   categories: Category[];

@@ -49,7 +49,7 @@ export default function QuestionsView() {
           {canEdit ? (
             <>
               <label className="field">
-                <span>{t.questions}</span>
+                <span>{t.question}</span>
                 <textarea rows={2} value={q.question} onChange={(e) => updateQuestion(q.id, { question: e.target.value })} />
               </label>
               <label className="field">

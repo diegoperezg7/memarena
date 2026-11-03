@@ -125,3 +125,28 @@ def test_judge_prompt_doc_is_in_sync():
     doc = (ROOT / "docs" / "judge-prompt.md").read_text()
     assert prompts.JUDGE_SYSTEM in doc and prompts.JUDGE_USER in doc
     assert prompts.ANSWER_USER in doc
+
+
+def test_demo_table_fits_narrow_terminals():
+    for cols in ("80", "120"):
+        res = CliRunner().invoke(app, ["demo", "--no-view"], env={"COLUMNS": cols})
+        assert res.exit_code == 0
+        assert "…" not in res.output, f"truncated cells at {cols} columns"
+        assert "full-context" in res.output and "accuracy by category" in res.output
+        assert max(len(line) for line in res.output.splitlines()) <= int(cols)
+
+
+def test_format_audit_handles_dict_and_string():
+    from memarena.report import format_audit
+
+    text = format_audit(
+        {
+            "checked": 80,
+            "false_positives": {"bm25": 1},
+            "false_negatives": {},
+            "corrected_accuracy": {"bm25": 0.65},
+        }
+    )
+    assert text.startswith("80 decisions checked by hand: 1 false positives (bm25 1), 0 false negatives.")
+    assert "bm25 65%" in text
+    assert format_audit("free text") == "free text"

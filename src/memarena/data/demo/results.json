@@ -28,7 +28,24 @@
   "max_cost": 2.0,
   "status": "complete",
   "recorded": true,
-  "judge_audit": "Manual check of all 80 judge decisions: 3 false positives, all temporal (full-context, bm25 and mem0 one each); no false negatives found."
+  "judge_audit": {
+   "checked": 80,
+   "false_positives": {
+    "full-context": 1,
+    "bm25": 1,
+    "mem0": 1
+   },
+   "false_negatives": {},
+   "categories": [
+    "temporal"
+   ],
+   "corrected_accuracy": {
+    "mem0": 0.7,
+    "bm25": 0.65,
+    "embeddings": 0.55,
+    "full-context": 0.45
+   }
+  }
  },
  "prompts": {
   "answer_system": "You answer questions about a user's past conversations with an AI assistant. Use only the memory context provided. Be brief: one or two sentences. If the context does not contain the answer, reply exactly: I don't know.",
