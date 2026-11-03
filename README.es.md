@@ -202,10 +202,23 @@ Proveedores (un solo cliente compatible con OpenAI, claves solo desde variables 
 (`OPENAI_API_KEY`), `openrouter` (`OPENROUTER_API_KEY`), `mistral` (`MISTRAL_API_KEY`). Sistemas opcionales:
 `SUPERMEMORY_API_KEY`, `LETTA_API_KEY`, `LETTA_BASE_URL`. memarena no envía telemetría.
 
-Los modelos locales que razonan, como `qwen3:4b`, piensan antes de responder y en un portátil van lentos; la
-ventana de contexto del servidor de Ollama (`OLLAMA_CONTEXT_LENGTH`) limita además lo que ve la línea base de
-contexto completo. Pon `--max-context-tokens` a esa ventana para que el recorte salga en los resultados en vez de
-pasar en silencio.
+**Ventana de contexto de Ollama.** Ollama sirve los modelos con una ventana pequeña por defecto (4096 tokens para
+`qwen3:4b` aquí) y su endpoint `/v1`, compatible con OpenAI, no deja cambiarla por petición, así que los prompts
+largos se recortan en silencio. Crea una vez una variante con más ventana (comparte los pesos, no ocupa disco) y
+usa esa:
+
+```bash
+printf 'FROM qwen3:4b\nPARAMETER num_ctx 16384\n' > Modelfile && ollama create qwen3:4b-16k -f Modelfile
+memarena run history.json questions.json --model qwen3:4b-16k --memory-model qwen3:4b-16k \
+  --max-context-tokens 12000 --num-ctx 16384
+```
+
+Deja `--max-context-tokens` por debajo de la ventana (con margen para la pregunta y la respuesta) para que la
+línea base de contexto completo recorte de forma visible en los resultados y no en silencio en el servidor, y deja
+`--num-ctx` igual a la ventana de la variante para que las llamadas de mem0 no obliguen a Ollama a recargar el
+modelo. Los modelos locales que razonan, como qwen3, piensan antes de responder y en un portátil van lentos. La
+demo grabada no usó Ollama para el chat: su modelo (`ministral-8b-latest`, ventana de 128k) recibió como mucho
+~69,3k tokens de prompt por pregunta, así que no se recortó nada.
 
 Para reproducir los datos y la ejecución de la demo:
 

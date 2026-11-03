@@ -197,9 +197,21 @@ Providers (one OpenAI-compatible client, keys only from environment variables, s
 (`OPENROUTER_API_KEY`), `mistral` (`MISTRAL_API_KEY`). Optional systems: `SUPERMEMORY_API_KEY`, `LETTA_API_KEY`,
 `LETTA_BASE_URL`. memarena sends no telemetry.
 
-Local reasoning models such as `qwen3:4b` think before answering, which is slow on a laptop; the Ollama server
-context window (`OLLAMA_CONTEXT_LENGTH`) also caps what the full-context baseline can see. Set
-`--max-context-tokens` to that window so the truncation shows up in the results instead of happening silently.
+**Ollama context window.** Ollama serves models with a small default window (4096 tokens for `qwen3:4b` here) and
+its OpenAI-compatible `/v1` endpoint cannot change it per request, so long prompts are cut silently. Create a
+variant with a bigger window once (it shares the weights, no extra disk) and point memarena at it:
+
+```bash
+printf 'FROM qwen3:4b\nPARAMETER num_ctx 16384\n' > Modelfile && ollama create qwen3:4b-16k -f Modelfile
+memarena run history.json questions.json --model qwen3:4b-16k --memory-model qwen3:4b-16k \
+  --max-context-tokens 12000 --num-ctx 16384
+```
+
+Keep `--max-context-tokens` below the window (leave room for the question and the answer) so the full-context
+baseline truncates visibly in the results instead of silently on the server, and keep `--num-ctx` equal to the
+variant's window so mem0's calls do not force Ollama to reload the model. Local reasoning models such as qwen3
+think before answering, which is slow on a laptop. The recorded demo did not use Ollama for chat: its answer model
+(`ministral-8b-latest`, 128k window) received at most ~69.3k prompt tokens per question, so nothing was cut.
 
 Reproduce the demo data and run:
 
