@@ -46,7 +46,7 @@ tus exportaciones y pone siempre contexto completo, BM25 y embeddings en la mism
 Demo grabada, sin claves, sin Docker y sin llamadas a modelos (menos de 2 minutos en una máquina limpia con `uv`):
 
 ```bash
-uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.2 memarena demo
+uvx memarena demo
 ```
 
 o desde un clon:
@@ -58,7 +58,6 @@ git clone https://github.com/diegoperezg7/memarena && cd memarena && uv run mema
 ![memarena demo in the terminal](docs/assets/demo.gif)
 
 Imprime la tabla de abajo y abre el visor en http://127.0.0.1:8765 (`--no-view` para solo imprimir).
-`uvx memarena` llegará con la publicación en PyPI.
 
 ## Ejemplo de salida
 
@@ -102,7 +101,7 @@ Cada respuesta, el razonamiento del juez y lo que recuperó cada sistema están 
 
 ```bash
 # 1. Importa tu exportación (conversations.json de ChatGPT o Claude, el .zip, o JSONL)
-uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.2 memarena import conversations.json --out history.json
+uvx memarena import conversations.json --out history.json
 
 # 2. Genera preguntas con respuesta y punteros a la evidencia (quedan como "pending")
 memarena generate history.json --out questions.json            # Ollama local por defecto

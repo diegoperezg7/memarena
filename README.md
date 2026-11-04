@@ -44,7 +44,7 @@ exports, and always puts full context, BM25 and embeddings in the same table.
 Recorded demo, no keys, no Docker, no model calls (under 2 minutes from a clean machine with `uv`):
 
 ```bash
-uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.2 memarena demo
+uvx memarena demo
 ```
 
 or from a clone:
@@ -56,7 +56,6 @@ git clone https://github.com/diegoperezg7/memarena && cd memarena && uv run mema
 ![memarena demo in the terminal](docs/assets/demo.gif)
 
 It prints the table below and opens the viewer on http://127.0.0.1:8765 (add `--no-view` to only print).
-`uvx memarena` is coming to PyPI.
 
 ## Example output
 
@@ -99,7 +98,7 @@ Browse every answer, the judge's reasoning and what each system retrieved in the
 
 ```bash
 # 1. Import your export (ChatGPT or Claude conversations.json, the export .zip, or JSONL)
-uvx --from git+https://github.com/diegoperezg7/memarena@v0.1.2 memarena import conversations.json --out history.json
+uvx memarena import conversations.json --out history.json
 
 # 2. Generate questions with gold answers and evidence pointers (written as "pending")
 memarena generate history.json --out questions.json            # local Ollama by default
