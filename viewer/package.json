@@ -9,16 +9,16 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "lucide-react": "1.59.0",
+    "lucide-react": "1.66.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "zustand": "5.0.15"
+    "zustand": "5.0.16"
   },
   "devDependencies": {
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.2",
-    "typescript": "5.9.3",
-    "vite": "8.3.4"
+    "typescript": "7.0.2",
+    "vite": "8.3.5"
   }
 }
