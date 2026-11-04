@@ -55,7 +55,7 @@ git clone https://github.com/diegoperezg7/memarena && cd memarena && uv run mema
 
 ![memarena demo in the terminal](docs/assets/demo.gif)
 
-It prints the table below and opens the viewer on http://127.0.0.1:8765 (add `--no-view` to only print).
+It prints the table below and opens the viewer on http://127.0.0.1:8765, which keeps running until you press Ctrl+C (add `--no-view` to only print).
 
 ## Example output
 

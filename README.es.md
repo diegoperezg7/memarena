@@ -57,7 +57,7 @@ git clone https://github.com/diegoperezg7/memarena && cd memarena && uv run mema
 
 ![memarena demo in the terminal](docs/assets/demo.gif)
 
-Imprime la tabla de abajo y abre el visor en http://127.0.0.1:8765 (`--no-view` para solo imprimir).
+Imprime la tabla de abajo y abre el visor en http://127.0.0.1:8765, que sigue en marcha hasta que pulses Ctrl+C (`--no-view` para solo imprimir).
 
 ## Ejemplo de salida
 
