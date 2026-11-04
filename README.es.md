@@ -248,6 +248,16 @@ Su aviso de licencia va junto a los datos, sin modificar, en
 [`src/memarena/data/demo/LICENSE-LongMemEval.txt`](src/memarena/data/demo/LICENSE-LongMemEval.txt)
 (copiado del repositorio de LongMemEval en el commit `9e0b455`), y se incluye en el wheel y en el sdist.
 
+## Parte de una serie
+
+Herramientas open source para medir agentes y LLMs con tus propios datos:
+
+- [parsearena](https://github.com/diegoperezg7/parsearena): Compara parsers de PDF lado a lado y su efecto en la recuperación.
+- [commitarena](https://github.com/diegoperezg7/commitarena): Reproduce fixes reales de tu historial de git con cualquier modelo.
+- [toolbloat](https://github.com/diegoperezg7/toolbloat): Mide el coste en tokens de tu pila MCP y los errores al elegir tool.
+- [rulelab](https://github.com/diegoperezg7/rulelab): Descubre qué reglas de tu AGENTS.md se ganan sus tokens.
+- [doesitfire](https://github.com/diegoperezg7/doesitfire): Comprueba si tu SKILL.md se activa en Claude Code, Codex y OpenCode.
+
 ## Licencia
 
 [MIT](LICENSE) para memarena. Los datos de la demo mantienen su propio aviso MIT (ver Datos de terceros).

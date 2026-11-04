@@ -241,6 +241,16 @@ Its license notice ships next to the data, unmodified, in
 [`src/memarena/data/demo/LICENSE-LongMemEval.txt`](src/memarena/data/demo/LICENSE-LongMemEval.txt)
 (copied from the LongMemEval repository at commit `9e0b455`), and is included in the wheel and the sdist.
 
+## Part of a series
+
+Open source tools that evaluate agents and LLMs on your own data:
+
+- [parsearena](https://github.com/diegoperezg7/parsearena): Compare PDF parsers side by side and their effect on retrieval.
+- [commitarena](https://github.com/diegoperezg7/commitarena): Replay real bug fixes from your git history against any model.
+- [toolbloat](https://github.com/diegoperezg7/toolbloat): Measure the token cost of your MCP stack and tool-choice errors.
+- [rulelab](https://github.com/diegoperezg7/rulelab): Find which AGENTS.md rules earn their tokens.
+- [doesitfire](https://github.com/diegoperezg7/doesitfire): Test whether your SKILL.md activates in Claude Code, Codex and OpenCode.
+
 ## License
 
 [MIT](LICENSE) for memarena itself. The bundled demo data keeps its own MIT notice (see Third-party data).
